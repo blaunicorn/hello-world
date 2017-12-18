@@ -1,0 +1,11 @@
+https://segmentfault.com/q/1010000011978041
+<el-radio-group :model="houseStructureValue.groundvalue">
+                                    <el-radio v-for="(item,index) in houseStructGroup.groundoptGroup"
+                                              size="small"
+                                              style="margin-left: 10px;"
+                                              border
+                                              :key="item.id"
+                                              :label="item.optionName">
+                                        {{item.optionName}}
+                                    </el-radio>
+                            </el-radio-group>
