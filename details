@@ -1,3 +1,73 @@
+details
+html5的新加的标签：details的用法,两种方式的介绍，一种是直接css的实现，一种是js+css的实现。
+
+<header>导航</header>
+    <nav>菜单</nav>
+    <article>内容</article>
+    <footer>
+        隐藏脚注
+        <details>页面生成于2015-7-9</details><br/>
+        显示脚注
+        <details open="open">
+            <summary>页面说明：</summary>
+            页面生成于2015/7/9
+            summary是对details的详细说明
+        </details>
+        <span onClick="span1_click()">js脚本控制交互元素的使用脚注</span>
+        <details id="details1">本页面生成时间：2015-7-9 11:27</details>
+        <script type="text/javascript">
+            function span1_click(){
+                var objD = document.getElementById("details1");
+                var attD = objD.getAttribute("open");
+                 
+                if(attD != "open"){
+                    objD.setAttribute("open","open");
+                }else{
+                    objD.removeAttribute("open");
+                }
+            }
+        </script>
+    </footer>
+通用的css样式的实现：
+
+<style type="text/css">
+header, nav, article,footer{
+    border:1px solid #666;
+    padding:5px;
+}
+header{
+    width:500px;
+}
+nav{
+    float:left;
+    width:60px;
+    height:100px;
+}
+article{
+    float:left;
+    width:428px;
+    height:100px;
+}
+footer{
+    clear:both;
+    width:500px;
+}
+details{
+    overflow:hidden;
+    height:0px;
+    padding-left:200px;
+    position:relative;
+    display:block;
+}
+details[open]{
+    height:auto;
+}
+span{
+    cursor:pointer;
+}
+</style>
+
+
 页面的初始化是由上至下的顺序，所以只需要把JS的函数写成页面加载就执行的形式，例如：$(function(){里面写函数})，
 然后放在页面head标签第一个。就会在初始化的最开始就执行JS函数，可以根据自己的需求调整位置
 <!DOCTYPE html>
