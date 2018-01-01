@@ -1,0 +1,45 @@
+页面的初始化是由上至下的顺序，所以只需要把JS的函数写成页面加载就执行的形式，例如：$(function(){里面写函数})，
+然后放在页面head标签第一个。就会在初始化的最开始就执行JS函数，可以根据自己的需求调整位置
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+        初始化页面触发js函数
+    </body>
+    <script>
+        window.onload=function(){
+            console.log("初始化页面触发js函数:我是页面加载完打印的");
+            funName()
+        }
+        var funName = function(){
+            console.log("初始化页面触发js函数:我是页面加载完,调用的")
+        }
+    </script>
+</html>
+
+在 body 标签中 指定要执行的函数
+<body onload="doXXX()">
+doXXX()就是你要调用的函数
+
+在页面加载的时候调用onload方法， 
+<body onload="a()"> 
+        <IMG id="IMG_1" style="CURSOR: hand" onclick="javascript:a()" src="images/nolines_plus.gif"' align=absMiddle border=0> 
+</body>
+
+在js 全局范围内: 
+直接调用这些onclick函数.... 
+
+如下.. 
+<script type="text/javascript"> 
+
+a(); 
+上面这行会在页面初始时,运行的... 
+
+function a(){ 
+........ 
+} 
+
+</script>
