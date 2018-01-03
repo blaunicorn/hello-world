@@ -1,0 +1,131 @@
+  修改index.js
+将host: 'localhost'改为
+host:’0.0.0.0’
+  
+  1.问题描述：
+    今天用 webpack (v1.14.0)配置本地服务，为了能在移动端预览开发效果，需要通过 IP 地址生存二维码然后手机扫描访问。却发现不能通过 ip 访问 localhost。
+     2.解决方案：
+     经多方查询，在 npm run dev 时添加参数 --host 0.0.0.0即可。
+vue init webpack myproject构建项目 使用localhost 或者127.0.0.1 均可以正常访问，但是切换到本地ip就不行了
+
+解决方式
+
+在 webpack.dev.conf.js 追加以下代码
+
+const HOST = process.env.HOST || '0.0.0.0';
+1
+这里写图片描述
+
+重新启动
+
+npm  run  dev
+1
+重新打开即可
+
+
+一、声明周期
+声明周期钩子详见这张图 https://segmentfault.com/q/1010000007704114
+1.0的ready替换成了mounted，即模板编译挂载之后
+数据data要写成function的形式了，像这样
+[javascript] view plain copy
+data () {  
+    return {  
+        tableList: [],  
+        currentModel: "",  
+        modal: {  
+            name: "",  
+            ip: "",  
+            ipList: [{"ip":"11"},{"ip":"22"},{"ip":"33"}], //  
+            desc: "",  
+        }  
+    }  
+}  
+二、路由中引入静态js，全局组件，全局变量，全局function
+1.引入全局的静态js库，建立一个与src同级的目录例如static，然后把静态资源放入该文件夹下，直接在根目录的index.html中引入如下，其他路由页面就都可以用了！（看起来好简单啊 我可是折腾了好久！！）
+[html] view plain copy
+<head>  
+    <link rel="shortcut icon" href="./static/img/favicon.ico" />   
+    <!-- 静态css -->  
+    <link rel="stylesheet" type="text/css" href="./static/css/bootstrap.min.css">  
+    <link rel="stylesheet" type="text/css" href="./static/css/framework.css">  
+    <link rel="stylesheet" type="text/css" href="./static/css/common.css">  
+    <link rel="stylesheet" type="text/css" href="./static/css/date-time-picker.css">  
+    <link rel="stylesheet" type="text/css" href="./static/css/dataTables.bootstrap.css">  
+  
+  
+    <!-- 静态js -->  
+    <script type="text/javascript" src="./static/js/lib/jQuery-2.1.4.min.js"></script>  
+    <script type="text/javascript" src="./static/js/lib/bootstrap.min.js"></script>  
+  
+  
+    <!-- <link rel="stylesheet" type="text/css" href="./static/css/fixedColumns.bootstrap.min.css"> -->  
+    <script type="text/javascript" src="./static/js/lib/jquery.dataTables.min.js"></script>  
+    <script type="text/javascript" src="./static/js/lib/dataTables.bootstrap.min.js"></script>  
+    <script type="text/javascript" src="./static/js/lib/date-time-picker.js"></script>  
+    <!-- <script type="text/javascript" src="./static/js/lib/dataTables.fixedColumns.min.js"></script> -->  
+  
+  
+    <meta charset="utf-8">  
+    <title>XYvod</title>  
+</head>  
+2.页面内的公共的参数
+比如，用户名，分组，权限等都放在framework.vue里，子页面用this.$parent.$parent.userInfo调用
+3.引入公共组件 component
+在main.js里import singleSelect from './components/functional_select/single_select' //引入
+[javascript] view plain copy
+Vue.component('singleSelect', singleSelect) //注册  
+这样注册后，所有路由页面都可以使用singleSelect了
+4.引入公共方法 function
+在main.js里，把一个方法绑定到vue的原型上，
+[javascript] view plain copy
+  
+[javascript] view plain copy
+Vue.prototype.hello = function(){  
+    console.log('ppppp')  
+}  
+然后在路由页面，调用this.hello('lemon',callback)就可以使用了
+同样适用于公共的util方法，不过我没有使用这种拓展Vue原型链的方法，而是在每个路由页面都单独import util，使用公共方法
+三、内插值属性1.0和2.0的写法不同了
+<!-- 1.x -->
+[html] view plain copy
+<div id="{{ selected.title }}">  
+<!-- 2.0 -->
+[html] view plain copy
+<div v-bind:title="selected.title" >test</div>  
+<div v-bind:someprop="testModel">test</div>  
+<div v-bind:class="'id-' + item.id">test</div>//字符串+变量  
+四、v-for循环的key，value值互换了位置，还有track-by
+[html] view plain copy
+<!-- 1.x -->  
+<div v-for="(index,item) in list" track-by="id">  
+[html] view plain copy
+<!-- 2.0 -->  
+<div v-for="(item,index) in list" :key="item.id">  
+五、filter过滤器
+filter过滤器现在要定义到和methods同级的对象下
+[javascript] view plain copy
+<div>{{ title | titleFilter }}</div>  
+methods: {},  
+filters: {  
+    titleFilter: function(value){  
+    return value+ 'ppp'  
+    }  
+}  
+六、遍历数组时，key值不能做model
+v-model绑定数据的时候，{key,value}这种数据类型，key值是不能做model的，js里不能修改key值，value值未声明的话会报错，但是modal.value没有的话，不会报错，数组也是同理，会报错
+下面是错误的写法：
+[html] view plain copy
+taskList: ["lemontest1","lemontest2","lemontest3"]  
+<div class="form-group" v-for="(task,index) in taskList">  
+    <input type="text" class="form-control" placeholder="请输入任务名称" v-model="task">  
+</div>  
+
+改为:：
+[html] view plain copy
+taskList: [ {name: "lemontest1"},{name: "lemontest2"},{name: "lemontest3"} ]  
+<div class="form-group" v-for="(task,index) in taskList">  
+    <input type="text" class="form-control" placeholder="请输入任务名称" v-model="task.name">  
+</div>  
+
+七、父子通信
+其实父子通信踩得坑最多了，很多的api和方法1.0和2.0都完全不一样了！详见之前的一篇组件父子通信！
