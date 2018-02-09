@@ -97,3 +97,50 @@ body {
     width: 300px;
     height: 200px;
 }
+.hide {
+    display: none;
+}
+#popup {
+    border-rader-radius: 10px;
+    border: 1px solid #666;
+    background: #4c5291;
+    width: 300px;
+    height: 350px;
+    margin: -430px auto;
+    display: box;
+    box-align: center;
+    z-index: 2;
+}
+#popup-box {
+    position: relative;
+    margin: 50px auto;
+    width: 280px;
+    height: 350px;
+}
+#popup-box-content {
+    width: 280px;
+    height: 350px;
+}
+#elapsed-time {
+    font-family: bubblegum-sans;
+    font-weight: bold;
+    font-size: 18px;
+}
+#timer {
+    margin-top: 20px;
+}
+#popup-box-content>h1 {
+    font-family: berkshire-swash;
+    font-size: 23px;
+    font-weight: bolder;
+    margin-bottom: 20px;
+}
+#popup-box-content>p {
+    font-family: frijole;
+    margin: 30px auto;
+    font-size: 18px;
+}
+.audio {
+    width: 300px;
+    height: 30px;
+}
