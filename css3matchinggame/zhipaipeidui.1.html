@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html >
+    <head>
+        <meta charset = "utf-8">
+        <title>Getting Familiar with CSS3 Transition</title>
+        <link rel = "stylesheet" href = "css/css3flip.css" />
+    </head>
+    <body>
+        <header>
+            <h1>Getting Familiar with CSS3 Transition</h1>
+        </header>
+
+        <section id = "game">
+            <div id = "cards">
+                <div class = "card">
+                <div  class = "face front"></div>
+                <div  class = "face back cardAK"></div>
+                </div>
+                <div class = "card">
+                        <div class = "face front"></div>
+                        <div class = "face back cardAQ"></div>
+                </div>
+            </div> <!-- #cards -->
+        </section> <!--#game -->
+        <h2><b>霸王龙</b></h2>
+        <h2><b>剑龙</b></h2>
+        <h2><b>打球跳高跳远电影除非己莫为忠言逆耳利于行</b></h2>
+        <footer>
+            <p>This is  an example of transitioning cards.</p>
+        </footer>
+        <script src = "js/jquery-3.3.1.min.js"></script>
+        <script>
+            $(function() {
+            $("#cards").children().each(function(index) {
+                //监听每个纸牌div元素的单击事件
+                $(this).click(function() {
+                    // 给纸牌div元素增加样式 "card-flipped"
+                    // 浏览器将实现纸牌当前状态与翻牌状态之间样式转换的动画
+                    $(this).toggleClass("card-flipped")
+                })
+            });
+            $("#card").addClass("rotateRight");               
+            })
+        </script>
+    </body>
+</html>

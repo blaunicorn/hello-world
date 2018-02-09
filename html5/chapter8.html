@@ -1,0 +1,88 @@
+<html>
+    <head>            <meta charset = "utf-8"></head>
+    <body>
+        <div class = "div1">
+            This is the first box.
+        </div>
+        <div class = "div2">
+            This is the second box.
+        </div>
+        <div class = "div1">
+            This is the outer box.        <div class = "div2">
+            This is the inner box.
+        </div>
+        </div>
+        <h1>Relative Positioning</h1>
+        <div id = "myContent">
+            <p> This paragraph uses CSS Relative
+                positioning to be placed 30 pixels
+                in from the left side.
+            </p>
+        </div>
+        
+        <div class= "overflow"><h1>
+            Wildflowers
+        </h1>
+        <img id="yls" src="ttt.jpg" alt = "Yellow Lady Slipper" height="100" width = "100">
+        <p>The heading and paragraph follow narmal flow. THe Yellow Lady Slipper pictured
+            on the right is a wildflower. It grows in wooded areas and blooms in June each year.
+            The Yellow Lady Slipper is a member of the orchid family.
+        </p><br class = "clearleft">
+        </div>
+        <h1>
+            Wildflowers
+        </h1>
+        <img class="float" src="ttt.jpg" alt = "Yellow Lady Slipper" height="100" width = "100">
+        <p>The heading and paragraph follow narmal flow. THe Yellow Lady Slipper pictured
+            on the right is a wildflower. It grows in wooded areas and blooms in June each year.
+            The Yellow Lady Slipper is a member of the orchid family.
+        </p>
+    </body>
+    <style>
+    .div1 {
+        width: 200px;
+        height: 200px;
+        background-color: #D1ECFF;
+        border: 3px dashed #000000;
+        padding: 5px;
+    }
+    .div2 {
+        width: 100px;
+        height: 100px;
+        border: 3px ridge #000000;
+        margin: auto;
+    }
+    #myContent {
+        position: relative;
+        left: 30px;
+        font-family: Arial,sans-serif;
+    }
+    h1 {
+        background-color: #cccc33;
+        padding: 5px;
+        color: #bb3737;
+    }
+    p {
+        font-family: Arial,sans-serif;
+        background-color: #969696;
+    }
+    #yls {
+        float: right;
+        margin: 0 0 5px 5px;
+        border: 1px solid #000000;
+    }
+    .float {
+        float: left;
+        margin-right: 10px;
+        border:3px ridge #000000;
+    }
+    .clearleft {
+        clear: right;
+    }
+    .overflow {
+        background-color: #f3f1bf;
+        overflow: auto;
+        width: 100%;
+    }
+    </style>
+</html>

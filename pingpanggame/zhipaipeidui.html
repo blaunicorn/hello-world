@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meat name = "viewport" content = "width = device -width, initial-scale = 1.0,
+    minimum-scale = 1.0, maximum-scale =1.0, user-scalable = no" />
+    <title>CSS3 Matching Game</title>
+    <link rel="stylesheet" href="css/matchgame.css" />
+</head>
+
+<body>
+    <header>
+        <h1>CSS3 Matching Game</h1>
+    </header>
+    <div class = "audio">
+        <audio src = "http://7xpe2j.com1.z0.glb.clouddn.com/mo.mp3"></audio>
+    </div>
+    <div id = "timer">
+        <span id = "elapsed-time">00:00</span>
+    </div>
+
+    <section id="game">
+        <div id="cards">
+            <div class="card">
+                <div class="face front"></div>
+                <div class="face back"></div>
+            </div>
+            <!--  .card -->
+        </div>
+        <!-- #cards -->
+    </section>
+    <!--#game -->
+
+    <section id = "popup" class = "hide">
+        <div id = "popup-box">
+            <div id = "popup-box-content">
+                <h1>You won!</h1>
+                <p>Your Score:</p>
+                <p><span class = "score"></span></p>
+                <p><small>last Score:<span class = "last-score"></span></small></p>
+                <p><small>best Score:<span class = "best-score"></span></small></p>
+                <p><small>save On: <span class = "saved-time"></span></small></p>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <p>This is an example of transitioning cards.</p>
+    </footer>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src = "js/html5-games.matchgame.js"></script>
+</body>
+
+</html>

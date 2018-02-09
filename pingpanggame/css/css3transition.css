@@ -1,0 +1,28 @@
+body {
+    background: #aaa;
+}
+/* 定义纸牌公用样式*/
+.card {
+    width: 80px;
+    height: 120px;
+    margin: 20px;
+    background: #efefef;
+    position: absolute;
+    -webkit-transition: all 1s linear;
+}
+/* 设置每张纸牌相应的背景图像  */
+.cardAK {
+    background: url(../images/ak.jpg);
+}
+.cardAQ {
+    background: url(../images/aq.jpg);
+}
+
+/* 应用样式的DOM元素旋转90度  */
+.rotateRight {
+    -webkit-transform: rotate3d(0, 0, 1, 90deg);
+}
+/* 应用样式的DOM元素移动并放大 */
+.moveAndScale {
+    -webkit-transform: translate3d(150px, 150px, 0) scale3d(1.5, 1.5, 1);
+}

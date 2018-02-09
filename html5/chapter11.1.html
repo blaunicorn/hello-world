@@ -1,0 +1,97 @@
+<html>
+    <head>
+            <meta charset = "utf-8">
+    <script type = "text/javascript">
+    function drawMe() {
+        var canvas = document.getElementById("myCanvas")
+        // document.write("设么都支持吗？")
+        if (canvas.getContext) {
+            var ctx = canvas.getContext("2d")
+            ctx.fillStyle = "rgb(255,0,0)"
+            ctx.font = "bold 3em Georgia"
+            ctx.fillText("My Canvas", 70, 100)
+            ctx.fillStyle = "rgba(0,0,200,0.50)"
+            ctx.fillRect(57,54,100,65)
+        }
+    }
+    </script>
+    </head>
+    <body onload = "drawMe()">
+        <h1>THe Canvas Element</h1>
+        <canvas id = "myCanvas" width = "400" height = "175"></canvas>
+<h1>Image Gallery</h1>
+    <div id = "gallery">
+        <ul><li><a href = "aaa.jpg"><img src = "aa1.jpg"
+        width = "100" height = "75" alt = "Golden Gate Bridge">
+    <span><img src = "aaa.jpg" width = "400" height = "300" alt = "Gold Gate Bridge"><br>Gold Gate Bridge</span></a></li>          
+        <li><a href = "aa2.jpg"><img src = "aa3.jpg"
+        width = "100" height = "75" alt = "Golden Gate Bridge">
+    <span><img src = "aa2.jpg" width = "400" height = "300" alt = "Gold Gate Bridge"><br>Gold Gate Bridge</span></a></li>          
+        <li><a href = "ttt.jpg"><img src = "aa4.jpg"
+        width = "100" height = "75" alt = "Golden Gate Bridge">
+    <span><img src = "ttt.jpg" width = "400" height = "300" alt = "Gold Gate Bridge"><br>Gold Gate Bridge</span></a></li>          
+    </ul>
+    <div class = "figure"><img src = "logo.gif" width = "250"><a>图例</a></div>
+</div>  
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+    </body>
+    <style>
+        canvas {
+            border: 2px solid red;
+        }
+    #gallery {
+        position: relative;
+    }
+    #gallery ul {
+        width: 300px;
+        list-style-type: none;
+    }
+    #gallery li {
+        display: inline;
+        float: left;
+        padding: 10px;
+    }
+    #gallery img {
+        border-style: none;
+    }
+    #gallery a {
+        text-decoration: none;
+        color: #333;
+        font-style:italic;
+    }
+    #gallery span {
+        display: none;
+    }
+    #gallery a:hover span {
+        display: block;
+        position: absolute;
+        top: 10px;
+        left: 300px;
+        text-align: center;
+    }
+    .figure {
+        float:right;
+        width: 260px;
+        margin: 20px;
+        padding:5px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        text-align: center;
+        font-size: .8em;
+        -webkit-transform: rotate(120deg);
+        -moz-transform:rotate(3);
+        -o-transform: rotate(3deg);
+        -ms-transform: rotate(3);
+        transform: rotate(30deg);
+        -webkit-box-shadow: 5px 5px 5px red;
+        box-shadow: 5px 5px 5px #828282;
+        -moz-box-shadow: 5px 5px 5px #4622e7;
+
+    }
+    .figure:hover {
+        -webkit-transform: rotate(-120deg);
+        -webkit-transition: -webkit-transform 1000ms linear;
+        
+    }
+    </style>
+</html>
