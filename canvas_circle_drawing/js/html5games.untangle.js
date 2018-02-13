@@ -2,8 +2,50 @@ var untangleGame = {
     circles: [],
     thinLineThickness: 1,
     boldLineThickness: 5,
-    lines: []
+    lines: [],
+    currentLevel: 0
 };
+untangleGame.levels = [
+    {
+        "level": 0,
+        "circles": [
+            {"x":400, "y": 156}, {"x":381, "y": 241},{"x":84, "y":233},{"x": 88, "y":73}
+        ],
+        "relationship": {
+            "0": {"connectedPoints": [1, 2]},
+            "1": {"connectedPoints": [0, 3]},
+            "2": {"connectedPoints": [0, 3]},
+            "3": {"connectedPoints": [1, 2]}
+        }
+    },
+    {
+        "level": 1,
+        "circles": [
+            {"x":401, "y": 73}, {"x": 400, "y": 240}, {"x": 88, "y": 241}, {"x": 84, "y": 72}
+        ],
+        "relationship": {
+            "0": {"connectedPoints": [1, 2, 3]},
+            "1": {"connectedPoints": [0, 2, 3]},
+            "2": {"connectedPoints": [0, 1, 3]},
+            "3": {"connectedPoints": [0, 1, 2]}
+        }
+    },
+    {
+        "level": 2,
+        "circles": [
+            {"x": 92, "y": 85}, {"x":253, "y": 13}, {"x": 393, "y": 86},
+            {"x":390, "y":214}, {"x":248, "y": 275}, {"x":95, "y": 216}
+        ],
+        "relationship": {
+            "0": {"connectedPoints": [2, 3, 4]},
+            "1": {"connectedPoints": [3,5]},
+            "2": {"connectedPoints": [0, 4, 5]},
+            "3": {"connectedPoints": [0, 1, 5]},
+            "4": {"connectedPoints": [0, 2]},
+            "5": {"connectedPoints": [1, 2, 3]}
+        }
+    }
+]
 function drawCircle(ctx, x, y, radius) {
     ctx.fillStyle = "rgba(200,100,100,.6)";
     ctx.beginPath();
@@ -38,6 +80,7 @@ $(function() {
     var width = canvas.width;
     var height = canvas.height;
 
+  /*  因为要根据关卡数据来绘制圆而不再是随机绘制，所以隐藏这段随机代码  
     // 随机放5个圆点
     var circlesCount = 5;
     for (var i = 0; i < circlesCount; i++) {
@@ -47,8 +90,15 @@ $(function() {
         untangleGame.circles.push(new Circle(x,y,circleRadius));
 
     } 
+    */
+    // 根据关卡数据设置圆的位置
+    setupCurrentLevel();
+
     console.log(untangleGame.circles)
     connectCircles();
+    console.log(untangleGame.lines)
+    updateLineIntersection();
+    console.log(untangleGame.lines)
 
     // 给Canvas添加鼠标事件监听器，检查按下鼠标的位置是否在任何一个小圆之上，并设置那个圆为拖曳目标小圆球
     $("#game").mousedown(function(e) {
@@ -76,13 +126,18 @@ $(function() {
             var mouseY = (e.pageY - canvasPosition.top) || 0;
             var radius = untangleGame.circles[untangleGame.targetCircle].radius;
             untangleGame.circles[untangleGame.targetCircle] = new Circle(mouseX, mouseY, radius);
+            // console.log(untangleGame.circles[untangleGame.targetCircle])
         }
         connectCircles();
+        updateLineIntersection();
+        updateLevelProgress();
     });
 
     // 当鼠标放下时，清楚拖曳目标小圆球的数据
     $("#game").mouseup(function(e) {
         untangleGame.targetCircle = undefined;
+        //每次放开鼠标，都检测是否过关
+        checkLevelCompleteness();
     });
 
     // 设置游戏主循环的循环间隔
@@ -98,12 +153,16 @@ function clear(ctx) {
 // 添加为每个圆分配连接线的函数。这些线将在稍后进行绘制。
 function connectCircles() {
     // 将每个圆用线相互连接
+    // 更新函数，根据关卡数据来连接圆
+    // 根据圆的关卡数据设置所有连接线
+    var level = untangleGame.levels[untangleGame.currentLevel];
     untangleGame.lines.length = 0;
-    for (var i = 0; i < untangleGame.circles.length; i++) {
+    for (var i in level.relationship) {
+        var connectedPoints = level.relationship[i].connectedPoints;
         var startPoint = untangleGame.circles[i];
-        for (var j = 0; j < i; j++) {
-            var endPoint = untangleGame.circles[j];
-            untangleGame.lines.push(new Line(startPoint, endPoint, untangleGame.thinLineThinckness));
+        for (var j in connectedPoints) {
+            var endPoint = untangleGame.circles[connectedPoints[j]];
+            untangleGame.lines.push(new Line(startPoint, endPoint, untangleGame.thinLineThickness))
         }
     }
 }
@@ -160,7 +219,7 @@ function isIntersect(line1, line2) {
     (isInBetween(line2.startPoint.x, x, line2.endPoint.x) || isInBetween(line2.startPoint.y, y, line2.endPoint.y))) {
         return true;
     } 
-    } return false;
+    } 
 }
 
 // 如果b在a与c之间返回true
@@ -175,4 +234,59 @@ function isInBetween(a, b, c) {
 
     // 如果b在a与c之间返回true
     return (a < b && b < c) || (c < b && b < a ) 
+}
+
+// 测试相交线，并把这些线加粗
+function updateLineIntersection() {
+    //检测相交的线 ，并加粗这些线
+    for (var i = 0; i < untangleGame.lines.length; i++) {
+        for (var j = 0; j < i; j++) {
+            var line1 = untangleGame.lines[i];
+            var line2 = untangleGame.lines[j];
+            // 如果检测到如果两条线相交，将加粗该线
+            if (isIntersect(line1, line2)) {
+                line1.thickness = untangleGame.boldLineThickness;
+                line2.thickness = untangleGame.boldLineThickness;
+            }
+        }
+    }
+}
+
+// 设置初始关卡数据
+function setupCurrentLevel() {
+    untangleGame.circles = [];
+    var level = untangleGame.levels[untangleGame.currentLevel];
+    for (var i = 0; i < level.circles.length; i++) {
+        untangleGame.circles.push(new Circle(level.circles[i].x, level.circles[i].y, 10));
+    }
+
+  // 设置圆之后再设置连接线数据
+  connectCircles();
+  updateLineIntersection();
+}
+
+//检测玩家是否已解决难题，如果已解决就跳到下一关
+function checkLevelCompleteness() {
+    if ($("#progress").html() == "100") {
+        if (untangleGame.currentLevel + 1 <untangleGame.levels.length) 
+        untangleGame.currentLevel++;
+        alert("你已完成本关卡 ，请进入下一关。")
+        setupCurrentLevel();
+    }
+}
+
+//添加函数更新游戏进度
+function updateLevelProgress() {
+    //检测当前关卡的解题进度
+    var progress = 0;
+    for (var i = 0; i < untangleGame.lines.length; i++) {
+        if (untangleGame.lines[i].thickness == untangleGame.thinLineThickness) {
+            progress++
+        }
+    }
+    var progressPercentage = Math.floor(progress / untangleGame.lines.length * 100);
+    $("#progress").html(progressPercentage);
+
+    //显示当前关卡
+    $("#level").html(untangleGame.currentLevel);
 }
