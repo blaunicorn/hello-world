@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <title>if statement example</title>
+    </head>
+    <body>
+        <h1>Current Date and Time</h1>>
+        <P>
+            <script language = "JavaScript" type = "text/javascript" src = "timegreet.js"></script>
+        </P>
+        <p>Script begins here.</p><hr>
+        <form name = "theform">
+        <input type = "text" name = "newname" value = "填入新名字" size "23" >
+        <input type = "button" name = "addname" value = "增加" onclick = "add()"><br>
+        <textarea cols = "60" rows = "10" name = "censhi"></textarea><br>
+        <script language = "JavaScript" type = "text/javascript"  src = "cardtest.js">          
+        </script>
+        <script language = "JavaScript" type = "text/javascript"  >  
+                names = new Array()
+        i = 0
+        do {
+            next = prompt('Enter the Next Name', '')
+            if (next > '')  names[i] =next
+            i = i + 1
+        }
+        while (next > '')
+        document.write('<h2>' + (name.length) + 'names entered.</h2>')
+        document.write('<ol>')
+            for (x in names) {
+                document.write('<li>' + names[x] + '</li> <br>')
+            }
+            document.write('</ol')
+                   counter = 1
+                   document.write("found" + counter + ((counter==1) ? "word.":"words."))
+                   for (i=0; i<10; i++) {
+            document.write('This is line:' + i +'<br>')
+        }
+        n = 1
+        total =0 
+        while (total<10) {
+            n++
+            total += n
+            document.write('This values[n]:'+n +'.this tatal:'+ total + '<br>')
+        }
+        for (i in navigator) {
+            document.write("property:" +i)
+            document.write('vaue:' + navigator[i] + '<br>')
+        }
+
+                </script>
+        <p>End of script.</p>
+    </body>
+
+</html>

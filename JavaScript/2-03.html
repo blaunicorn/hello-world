@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script language="JavaScript">
+    let names = [12,2,23,5,243,232,5466]
+    document.write("原来数组是：" + names[0])
+    document.write("正常排序是：" + names.sort() + "<br>")
+    document.write("原来数组是：" + names[0])
+    function numcompare (a,b) {
+        return a-b
+    }
+    document.write("我们想要的输出是：" + names.sort(numcompare) + "<br>")
+    document.write("原来数组是：" + names[0])
+</script>
+
+</body>
+</html>

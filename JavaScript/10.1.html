@@ -1,0 +1,26 @@
+<html>
+    <head><title>Moving and resizing windows</title></head>
+    <script language = "javascript" type = "text/javascript">
+    window.confirm("this is a est")
+     ident = window.setTimeout("alert('Time's up!')", 10000);
+    function DoIt() {
+
+        if (document.form1.w.value && document.form1.h.value)
+        self.resizeTo(document.form1.w.value, document.form1.h.value)
+        if (document.form1.x.value && document.form1.y.value)
+        self.moveTo(document.form1.x.value, document.form1.y.value)
+    }
+    </script>
+    <body>
+        <h1>Movingand Resizing windows</h1>
+        <form name = "form1">
+            <b>width:</b><input type = "text" name = "w"><br>       
+            <b>Height:</b><input type = "text" name = "h"><br>
+            <b>x-position:</b><input type = "text" name ="x"><br>
+            <b>y-position:</b><input type = "text" name = "y"><br>
+            <input type = "button" value = "Change window" onClick = "DoIt()">
+            
+        </form>
+        <br><p>Have fun!</p>
+    </body>
+</html>

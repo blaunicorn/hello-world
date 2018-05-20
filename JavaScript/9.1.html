@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>Testing Script.aculo.us effects</title>
+        <script language = "JavaScript" type = "text/javascript" src = "prototype.js"></script>      
+        <script language = "JavaScript" type = "text/javascript" src = "effects.js"></script>      
+    </head>
+    <body>
+        <a href = "http://www.jsworkshop.com" onMouseOver = "window.alert('you moved ouver the link.')">
+        click here</a>
+        <a href = "http://www.google.com/" id = "link1">clicjk</a>
+        <a href = "http://www.jsworkshop.com/" onClick = "return(window.confirm('Ara you sure?'))">click here three.</a>
+    <script language = "JavaScript" type = "text/javascript" >   
+    obj = document.getElementById('link1')
+    obj.onclick = mousealert
+    function mousealert () {
+        alert('You clicked the mouse!')
+    }    
+    document.onmousedown = 'mousealert'
+    </script>
+    </body>
+</html>

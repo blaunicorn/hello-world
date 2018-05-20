@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>JavaScript Buiness Cards</title>
+    </head>
+    <body>
+        <p>JavaScript Business Card Test</p>
+        <p>Script begins here.</p><hr>
+        <form name = "theform">
+        <input type = "text" name = "newname" value = "填入新名字" size "23" >
+        <input type = "button" name = "addname" value = "增加" onclick = "add()"><br>
+        <textarea cols = "60" rows = "10" name = "censhi"></textarea><br>
+        <script language = "JavaScript" type = "text/javascript"  src = "cardtest.js">          
+ 
+        </script>
+                <script language = "JavaScript" type = "text/javascript"  >          
+                    function add () {
+                  let thename
+                  thename = document.theform.newname.value
+                  document.theform.censhi.value = thename
+                  wangwang = new Card("thename","2333 walnet circle","555-23424","3434-234234")
+                  wangwang.PrintCard()
+              }      
+                      </script>
+        <p>End of script.</p>
+    </body>
+
+</html>

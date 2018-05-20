@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>Functions</title>
+        <script language="JavaScript" type = "text/javascript">
+        function Greet(who) {
+            alert("Greetings," + who)
+        }
+        function AddName () {
+        var thename
+        thename = document.theform.newname.value
+        document.theform.ceshi.value = thename
+        Greet(thename)
+        }
+        </script>
+    </head>
+    <body>
+        this is the body of the page.
+        <form name = "theform">
+        Name: <input type = "text" name = "newname" size = "20" value ="请输入姓名">
+        <input type = "button" name = "addname" value= "增加" onclick = "AddName()">
+        <br>
+        <textarea cols="60" rows = "10" name= "ceshi">测试用</textarea>
+        </form>
+        <script language = "JavaScript" type = "text/javascript" >
+        // Greet("hongg")
+        var ppp = "agjajf"
+       // Greet(ppp)
+        </script>
+
+    </body>
+
+</html>

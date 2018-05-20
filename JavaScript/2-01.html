@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script language="JavaScript">
+var score = new Array ("王勇",50,"白露", 60,"洋洋",76,"李明",83,"张丽丽",70,"杨中南",71,"徐霞",66,"杨玉婷",93);
+var nameOf_0To59="";
+var nameOf_60To69="";
+var nameOf_70To79="";
+var nameOf_80To89="";
+var nameOf_90To100="";
+var scoreSum=0;
+ document.write("<b>高等数学成绩统计表</b><br>");
+for (n in score)
+{
+if (n%2 ==1){
+    if ( (score[n]>=0) && (score[n]<=59))
+    {
+        nameOf_0To59+=score[n-1]+"  ";
+    }
+    if ((score[n]>=60)&&(score[n]<=69))
+    {
+        nameOf_60To69+=score[n-1]+"  ";
+    }
+    if ( (score[n]>=70)&&(score[n]<=79))
+    {
+        nameOf_70To79+=score[n-1]+ "  ";
+    }
+    if ((score[n]>=80)&&(score[n]<=89))
+    {
+        nameOf_80To89+=score[n-1]+"  ";
+    }
+    if ( (score[n]>=90)&&(score[n]<100))
+    {
+        nameOf_90To100+=score[n-1] + "  ";
+    }
+    document.write("<li>"+ score[n]+"<br>");
+    document.write("<li>"+ nameOf_0To59+"<br>");
+    scoreSum+=score[n];
+    }
+
+}
+document.write("<li>00-59分：" +nameOf_0To59+"<br>");
+document.write("<li>60-69分："+nameOf_60To69+"<br>");
+document.write("<li>70-79分："+nameOf_70To79+"<br>");
+document.write("<li>80-89分："+nameOf_80To89+"<br>");
+document.write("<li>90-100分："+nameOf_90To100+"<br>");
+document.write("<li>总分为："+scoreSum+"<br>");
+document.write("<li>平均分为："+scoreSum/(score.length/2)+"<br>");
+
+
+
+
+
+
+ for(index in score)
+ {
+     if (index%2==1)
+     {
+         if ( (score[index]>=0) && (score[index]<=59))
+         {
+             nameOf_0To59+=score[index-1]+"  ";
+         }
+         if ((score[index]>=60)&&(score[index]<=69))
+         {
+             nameOf_60To69+=score[index-1]+"  ";
+         }
+         if ( (score[index]>=70)&&(score[index]<=79))
+         {
+             nameOf_70To79+=score[index-1]+ "  ";
+         }
+         if ((score[index]>=80)&&(score[index]<=89))
+         {
+             nameOf_80To89+=score[index-1]+"  ";
+         }
+         if ( (score[index]>=90)&&(score[index]<100))
+         {
+             nameOf_90To100+=score[index-1] + "  ";
+         }
+         scoreSum+=score[index];
+     }
+ }
+
+ document.write("<li>00-59分：" +nameOf_0To59+"<br>");
+ document.write("<li>60-69分："+nameOf_60To69+"<br>");
+ document.write("<li>70-79分："+nameOf_70To79+"<br>");
+ document.write("<li>80-89分："+nameOf_80To89+"<br>");
+ document.write("<li>90-100分："+nameOf_90To100+"<br>");
+ document.write("<li>平均分为："+scoreSum/(score.length/2)+"<br>");
+
+</script>
+
+</body>
+</html>

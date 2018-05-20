@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>Alerts, Confirmations, and Prompts</title>
+        <script language = "javascript" type = "text/javascript">
+        var counter = 0;
+        ID = window.setTimeout('Update();', 2000);
+        function Update() {
+            counter++;
+            document.form1.input1.value = "The counter is now at " + counter;
+            ID = window.setTimeout("Update();", 2000);
+        }
+        </script>
+    </head>
+    <body>
+        <h1>Alerts, Confirmation, and Prompts</h1><hr>
+        Use the buttons below to test dialogs in JavaScript.
+        <hr>
+        <form name = "winform">
+            <p><input type = "button" value = "Display an Alert" onClick = "window.alert('This is a test alert.');"></p>
+            <p><input type = "button" value = "Display a Conformation" onClick = "window.confirm('Would you like to confirm?')"></p>
+            <p><input type = "button" value = "Display a Prompt" onClick = "window.prompt('Enter some Text:', 'This is the default value')"></p>
+        </form>
+    </body>
+</html>

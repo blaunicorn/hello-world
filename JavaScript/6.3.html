@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>Test of heading method</title>
+        <script language="JavaScript" type = "text/javascript">
+
+        </script>
+    </head>
+    <body>
+        <p>The following is the result of the function call.</p>
+        <form name = "theform">
+        <script language = "JavaScript" type = "text/javascript" >
+        function addhead (level) {
+            html = "H" + level
+            text = this.toString()
+            start = "<" + html + ">"
+            stop = "</" + html + ">"
+            return start + text + stop
+        }
+        String.prototype.heading = addhead
+        document.write("this is a heading 1".heading(1))
+        document.write("this is a heading 2".heading(2))
+        document.write("this is a heading 3".heading(3))
+        </script>
+
+    </body>
+
+</html>

@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>Frame Test</title>
+        <script language = "javascript" type = "text/javascript">
+        var counter = 0;
+        ID = window.setTimeout('Update();', 2000);
+        function Update() {
+            counter++;
+            document.form1.input1.value = "The counter is now at " + counter;
+            ID = window.setTimeout("Update();", 2000);
+        }
+        function FillFrame(framename) {
+            // Find the object for the frame
+            theframe = parent[framename]
+            // Open and clear the frame's document
+            theframe.document.open()
+            // Create some output
+            theframe.document.write('<h1>JavaScript Output</h1>')
+            theframe.document.write('<p>This text is in the')
+            theframe.document.write(framename + 'frame.</p>')
+        }
+        </script>
+    </head>
+    <body>
+        <h1>Frame Test</h1>
+        <form name = "form1">
+            <input type = "button" value = "Top right" onClick = "FillFrame('top_right')">
+            <input type = "button" value = "Bottom left" onClick = "FillFrame('bottom_left')">
+            <input type = "button" value = "Bottom right" onClick = "FillFrame('bottom_right')">
+        </form>
+    </body>
+</html>

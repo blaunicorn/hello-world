@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>Displaying Keypresses</title>
+        <script language = "javascript" type = "text/javascript">
+        function DisplayKey(e) {
+            // whice key was pressed?
+            if (e.keyCode) keycode = e.keyCode
+            else keyCode = e.which
+            character = String.fromCharCode(keycode)
+            // find the object for the destination paragraph
+            k= document.getElementById('keys')
+            // add the character to the paragraph
+            k.innerHTML += character
+           // document.write("adfd")
+        }
+        </script>
+    </head>
+    <body  onLoad = "alert('Loading complete')" onKeyPress = "DisplayKey(event)">
+      <h1>Displaying Typed Characters</h1>
+      <p>This document includes a simple scripte that displays the keys
+          you type in the paragraph below. Type a few keys and try it.
+      </p>
+      <p id = "keys"></p>
+    </body>
+</html>

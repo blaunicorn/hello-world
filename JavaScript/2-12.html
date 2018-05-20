@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script language="JavaScript">
+
+document.write("Hello World！<br>" );
+document.write("名称：" + navigator.appName + "<br>");
+document.write("版本号：" + navigator.appVersion + "<br>");
+document.write("发行代号："+ navigator.appCodeName + "<br>");
+var poets = new Array("王维","杜甫","李白","白居易");
+document.write("古代几个大诗人：<br>");
+for (n in poets)
+    (
+        document.write("<li>"+ poets[n]+"<br>")
+    )
+function Card(owner,rate)
+{
+    this.Owner=owner;
+    this.MaxRate=rate;
+}
+var myCard =new Card("sunsir","400KMph");
+    document.write(myCard.Owner+"的车子极速为："+myCard.MaxRate+"<br>");
+    var age=prompt("请输入您的年龄：","0");
+    if (age<=0)
+    {
+        alart("您输入的数据不合法！")
+    }
+    else
+    {
+        alert("您的年龄为："+ age + "岁！");
+    }
+</script>
+<input tyep="button" value="按钮" onclick="alert('嵌入在HTML标签中的JavaScript程序');"/>
+</body>
+</html>
