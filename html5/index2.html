@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+<script  language="javascript"> 
+    // function A(callback) {
+    //     callback();
+    //     console.log('I am main')
+    // }
+    // function B() {
+    //     setTimeout('console.log("I am ee")', 3000)
+    // }
+    // function say(value) {
+    //     alert(value)
+    // }
+    // alert(say)
+    // alert(say('hi js.'))
+    // window.onload =  A(B);
+    // function say(value) {
+    //     alert(value);
+    // }
+    // function execute (someFunction, value) {
+    //     someFunction(value);
+    // }
+    // execute(say,'hi js.')
+    function execute (someFunction ,value) {
+        someFunction(value);
+    }
+    execute(function(value) {alert(value);}, 'hi js.')
+</script>
+</body>
+</html>

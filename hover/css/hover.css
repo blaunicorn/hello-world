@@ -1,0 +1,55 @@
+html,body {
+    padding: 0;
+    margin: 0;
+}
+#mapBg {
+    width: 100%;
+}
+
+.hotSpot {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+}
+
+.hotSpot a.hotSpotBtn span {
+    background: url(../img/hotspot.gif) 0 0 no-repeat;
+}
+
+.hotSpot a span {
+    width: 32px;
+    height: 32px;
+    display: block;
+    text-indent: -9999px;
+    cursor: pointer;
+    opacity: 1;
+    position: absolute;
+    z-index:1;
+}
+
+#zgHotspot {
+    top: 300px;
+    left: 520px;
+    opacity: 1;
+}
+#hlHotspot {
+    top: 100px;
+    left: 720px;
+    opacity: 1;
+}
+.detailImg {
+    display: none;
+    position: relative;
+}
+
+#zg img {
+    position: absolute;
+    top: -120px;
+    left: -180px;
+}
+#hl img {
+    position: absolute;
+    top: -120px;
+    left: -180px;
+}

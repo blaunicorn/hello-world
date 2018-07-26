@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS3 Matching Game</title>
+    <link rel = "stylesheet" href="css/matchgame.css" />
+    <!-- <link href="http:/fonts/googleapis.com/css?family=Orbitron:400,700" rel = "stylesheet" type = "text/css"> -->
+</head>
+<body>
+    <header>
+        <h1>Getting Familiar With CSS3 Transition</h1>
+    </header>
+    <div id = "timer">
+        Elapsed time: <span id = "elapsed-time">00:00</span>
+    </div>
+    <section id = "game">
+        <div id = "cards">
+                <div class = "card">
+                        <div class = "face front"></div>
+                        <div class = "face back"></div>
+                </div>  <!--.card-->
+        </div> <!--#card-->
+    </section>  <!--#game-->
+    <section id = "popup" class = "hide">
+        <div id = "popup-bg"></div>
+        <div id = "popup-box">
+            <div id = "popup-box-content">
+                <h1>You Won!</h1>
+                <p>Your Score: </p>
+                <p><span class= "score">13</span></p>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <p> This is an example of transitioning cards.</p>
+    </footer>
+    <ul id= "games">
+        <li data-chapter = "2" data-difficulty="easy">Ping-Pong</li>
+        <li data-chapter = "3" data-difficulty = "medium">Matching Game</li>
+    </ul>
+    <script src = "js/jquery-3.3.1.js"></script>
+    <script src="js/html5games.matchgame.js"> </script>
+</body>
+</html>

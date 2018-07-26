@@ -1,25 +1,32 @@
 <!DOCTYPE html>
-<html lang = "en">
-    <head>
-        <meta charset = "utf-8">
-        <title> Drawing Circles in Canvas</title>
-        <link rel="stylesheet" href = "css/untangle.css" />
-    </head>
-    <body>
-        <header>
-            <h1>Untangle Puzzle Game in Canvas</h1>
-        </header>
+<html lang="en">
 
-        <canvas id = "game" width = "768" height = "400">
-            Sorry, your web brower does not support Canvas content.
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/untangle.css" />
+    <title>Drawing lines in Canvas</title>
+    <!-- <title>Drawing Circles in Canvas</title> -->
+</head>
+
+<body>
+    <section id = "layers">
+        <canvas id = "bg" width="768" height="440">            Sorry, your web browser does not support Canvas content.</canvas>
+        <canvas id = "guide" width=:"768" height="440"></canvas>
+        <canvas id="game" width="768" height="440">
+            Sorry, your web browser does not support Canvas content.
         </canvas>
-        <p>Puzzle <span id = "level">0 </span>, Completeness:
-        <span id = "progress">0</span></p>
+        <canvas id ="ui" width="768" height="400"></canvas>
+        <p>Puzzle
+            <span id="level">0</span>, Completeness:
+            <span id="progress">0</span>%</p>
         <footer>
-            <p>This is an example of drawing lines in Canvas.</p>
+            <p>This is an example of drawing circles in Canvas on mouse click</p>
         </footer>
+    </section>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/html5games.untangle.4.js"></script>
+</body>
 
-        <script src = "js/jquery-3.3.1.min.js"></script>
-        <script src = "js/html5games.untangle.js"></script>
-    </body>
 </html>

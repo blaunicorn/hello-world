@@ -1,0 +1,27 @@
+/* .scene {
+    width: 768px;
+    height: 440px;
+    /* position: absolute; */
+/* } */ */
+#game-scene {
+
+    background: #efefef url(../images/game_bg.jpg);
+    top: -440px;
+
+}
+#game-scene.show-scene {
+    top: 0;
+    -webkit-transition: top 0.3s linear;
+    -moz-transition: top .3s linear;
+    transition: top .3s linear;
+}
+#game-canvas, #game-background-canvas {
+    position: absolute;
+}
+
+#game {
+    position:relative;
+    width: 768px;
+    height: 440px;
+    overflow: hidden;
+}
